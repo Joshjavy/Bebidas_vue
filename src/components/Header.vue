@@ -1,12 +1,19 @@
 <script setup>
-    import { RouterLink} from 'vue-router'
+import { computed } from 'vue'
+    import { RouterLink, useRoute } from 'vue-router'
+    const route = useRoute()
+
+    const paginaInicio = computed(()=> route.name=== 'inicio')
+
+
 </script>
 <template>
     <header
         class="bg-slate-700"
+        :class="{header: paginaInicio}"
     >
-        <div class="mx-auto container px-5 py-16">
-        <div class="flex justify-between items-center">
+        <div class="mx-auto container px-5 py-2">
+        <div class="flex justify-between items-center mb-6">
             <div>
                 <RouterLink
                     :to="{name:'inicio'}"
@@ -35,7 +42,8 @@
         </div>
 
         <form
-            class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6"
+            class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-7 p-10 rounded-lg shadow space-y-6"
+            v-if="paginaInicio"
             action="">
                 <div class="space-y-4">
                     <label
@@ -74,3 +82,11 @@
         </div>
     </header>
 </template>
+
+<style>
+    .header{
+        background-image: url('/img/bg.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
