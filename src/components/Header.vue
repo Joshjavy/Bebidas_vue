@@ -58,6 +58,7 @@ import { computed } from 'vue'
                         id="ingrediente"
                         class="p-3 w-full rounded-lg focus:outline-none"
                         placeholder="Nombre o ingrediente: ej. vodka, tequila, etc"
+                        v-model="store.busqueda.nombre"
                         >
                 </div>
 
@@ -70,7 +71,7 @@ import { computed } from 'vue'
                     <select
                         id="categoria"
                         class="p-3 w-full rounded-lg focus:outline-none"
-                        placeholder="Nombre o ingrediente: ej. vodka, tequila, etc"
+                        v-model="store.busqueda.categoria"
                         >
                         <option value="">--- Seleccione ---</option>
                         <option
