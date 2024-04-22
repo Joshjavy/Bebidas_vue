@@ -73,6 +73,13 @@ import { computed } from 'vue'
                         placeholder="Nombre o ingrediente: ej. vodka, tequila, etc"
                         >
                         <option value="">--- Seleccione ---</option>
+                        <option
+                            v-for="categoria in store.categorias"
+                            :key="categoria.strCategory"
+                            :value="categoria.strCategory"
+                        >{{ categoria.strCategory }}
+                        </option>
+
                         </select>
                 </div>
                 <input type="submit"
