@@ -10,13 +10,16 @@ export const useBebidasStore = defineStore('bebida',()=>{
         categoria:''
     })
 
+    const recetas =ref([]);
+
     onMounted(async()=>{
         const {data:{drinks}} = await APIService.obtenerCategorias()
         categorias.value = drinks;
     })
 
-    function obtenerRecetas(){
-        console.log('consultando')
+    async function obtenerRecetas(){
+        const {data:{drinks}} = await APIService.buscarRecetas(busqueda);
+        recetas.value= drinks
     }
 
 
