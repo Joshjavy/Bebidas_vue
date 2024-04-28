@@ -8,6 +8,10 @@ export default {
         return api.get(`/filter.php?c=${categoria}&i=${nombre}`)
     },
 
+    buscarReceta(id){
+        return api.get(`/lookup.php?i=${id}`)
+    },
+
 
 
 }

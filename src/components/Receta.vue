@@ -1,4 +1,8 @@
 <script setup>
+    import { useBebidasStore } from '../stores/bebidas'
+
+    const bebidas = useBebidasStore();
+
     defineProps({
         receta:{
             type: Object,
@@ -21,6 +25,7 @@
             <h2 class="text-2xl truncate font-extrabold"> {{ receta.strDrink }} </h2>
             <button
                 class="bg-orange-300 hover:bg-orange-500 mt-5 w-full p-3 font-bold text-white text-lg"
+                @click="bebidas.seleccionarBebida(receta.idDrink)"
             >
                 Ver receta
             </button>
