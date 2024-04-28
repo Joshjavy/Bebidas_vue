@@ -14,8 +14,14 @@ export const useBebidasStore = defineStore('bebida',()=>{
         categorias.value = drinks;
     })
 
+    function obtenerRecetas(){
+        console.log('consultando')
+    }
+
+
     return {
         categorias,
-        busqueda
+        busqueda,
+        obtenerRecetas
     }
 })

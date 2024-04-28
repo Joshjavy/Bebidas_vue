@@ -7,7 +7,11 @@ import { computed } from 'vue'
 
     const paginaInicio = computed(()=> route.name=== 'inicio')
 
-
+    const handlesubmit =()=>
+    {
+        //todo: validar
+        store.obtenerRecetas()
+    }
 </script>
 <template>
     <header
@@ -44,9 +48,11 @@ import { computed } from 'vue'
         </div>
 
         <form
-            class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-7 p-10 rounded-lg shadow space-y-6"
             v-if="paginaInicio"
-            action="">
+            class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-7 p-10 rounded-lg shadow space-y-6"
+            @submit.prevent="handlesubmit"
+
+            >
                 <div class="space-y-4">
                     <label
                         class="block text-white uppercase font-extrabold text-lg"
