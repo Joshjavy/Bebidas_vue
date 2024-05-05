@@ -1,9 +1,10 @@
 <script setup>
   import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
   import {useModalStore} from '../stores/modal'
+  import {useBebidasStore} from '../stores/bebidas'
 
   const modal = useModalStore();
-
+  const bebidas = useBebidasStore();
 </script>
 
 <template>
@@ -18,8 +19,12 @@
               <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl sm:p-6" >
                 <div>
                   <div class="mt-3">
-
-
+                      <DialogTitle as="h3" class="text-gray-900 text-4xl font-extrabold my-3 align-middle">
+                        {{ bebidas.receta.strDrink }}
+                      </DialogTitle>
+                      <img class="hover:scale-125 transition-transform w-1/2 hover:rotate-2"
+                          :src="bebidas.receta.strDrinkThumb"
+                          :alt="'imagen de ' + bebidas.receta.strDrink"/>
 
                   </div>
                 </div>
