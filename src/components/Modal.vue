@@ -5,6 +5,29 @@
 
   const modal = useModalStore();
   const bebidas = useBebidasStore();
+
+  const formatearIngredientes=()=>{
+    const ingredientesDiv = document.createElement('div');
+
+    for (let i=1; i < 15; i++){
+      if(bebidas.receta[`strIngredient${i}`]){
+        const ingrediente = bebidas.receta[`strIngredient${i}`]
+        const cantidad = bebidas.receta[`strMeasure${i}`]
+
+        const ingredienteCantidad = document.createElement('p');
+        ingredienteCantidad.classList.add('text-lg');
+        ingredienteCantidad.textContent=`${ingrediente} - ${cantidad}`
+
+        ingredientesDiv.appendChild(ingredienteCantidad)
+      }
+    }
+
+    return ingredientesDiv;
+
+  }
+
+
+
 </script>
 
 <template>
@@ -22,9 +45,20 @@
                       <DialogTitle as="h3" class="text-gray-900 text-4xl font-extrabold my-3 align-middle">
                         {{ bebidas.receta.strDrink }}
                       </DialogTitle>
-                      <img class="hover:scale-125 transition-transform w-1/2 hover:rotate-2"
+                      <img class="h-auto w-1/2 mx-auto"
                           :src="bebidas.receta.strDrinkThumb"
                           :alt="'imagen de ' + bebidas.receta.strDrink"/>
+
+                          <DialogTitle as="h3" class="text-gray-900 text-4xl font-extrabold my-3 align-middle">
+                            Ingredientes y cantidades
+                          </DialogTitle>
+
+                          <div class="text-lg text-gray-500 " v-html="formatearIngredientes().outerHTML"></div>
+
+                          <DialogTitle as="h3" class="text-gray-900 text-4xl font-extrabold my-3 align-middle">
+                            Instrucciones
+                          </DialogTitle>
+                          <p class="text-lg text-gray-500 "> {{ bebidas.receta.strInstructions }}</p>
 
                   </div>
                 </div>
