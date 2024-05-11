@@ -20,8 +20,15 @@ export const useFavoritosStore = defineStore('favoritos',()=>{
         localStorage.setItem('favoritos',JSON.stringify(favoritos.value))
     }
 
+    const existeFavorito=(id)=>{
+        const favoritosLocalStorage = JSON.parse(localStorage.getItem('favoritos')) ?? []
+        
+        return favoritosLocalStorage.some(favorito => favorito.idDrink === id)
+    }
     const handleClickFavorito =()=>{
-        favoritos.value.push(bebidas.receta)
+
+        if(!existeFavorito(bebidas.receta.idDrink))
+            favoritos.value.push(bebidas.receta)
     }
     
     return {
