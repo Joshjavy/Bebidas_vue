@@ -28,18 +28,18 @@ import { computed } from 'vue'
                 </RouterLink>
             </div>
             <nav
-                class="flex gap-4"
+                class="flex gap-4 text-white"
             >
                 <RouterLink
                     :to="{name:'inicio'}"
-                    class="text-white uppercase font-bold"
+                    class=" uppercase font-bold"
                     active-class="text-orange-500"
                 >
                     Inicio
                 </RouterLink>
                 <RouterLink
                     :to="{name:'favoritos'}"
-                    class="text-white uppercase font-bold"
+                    class="uppercase font-bold"
                     active-class="text-orange-500"
                 >
                     Favoritos
