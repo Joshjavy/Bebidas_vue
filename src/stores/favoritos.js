@@ -39,6 +39,9 @@ export const useFavoritosStore = defineStore('favoritos',()=>{
         favoritos.value.push(bebidas.receta)
         notificaciones.mostrar=true;
         notificaciones.texto='Se ha agrego a tus favoritos';
+        setTimeout(()=>{
+            notificaciones.$reset()
+        },3000)
 
     }
     const handleClickFavorito =(e)=>{
