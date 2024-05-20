@@ -2,14 +2,37 @@
 import { computed } from 'vue'
     import { RouterLink, useRoute } from 'vue-router'
     import { useBebidasStore }from '../stores/bebidas'
+    import { useNotificacionStore } from '@/stores/notificaciones';
+
     const route = useRoute()
     const store = useBebidasStore();
-
+    const notificaciones = useNotificacionStore()
     const paginaInicio = computed(()=> route.name=== 'inicio')
 
     const handlesubmit =()=>
     {
         //todo: validar
+
+        if(Object.values(store.busqueda).includes('')){
+            //notificaciones.texto='Todos los campos son requeridos'
+            //notificaciones.mostrar=true
+            //notificaciones.error=true
+            //notificaciones.$patch({
+            //    texto:'Todos los campos son requeridos',
+            //    mostrar:true,
+            //    error:true
+            //})
+
+            notificaciones.$state ={
+                texto:'Todos los campos son requeridos',
+                mostrar:true,
+                error:true
+            }
+            return
+        }
+
+
+
         store.obtenerRecetas()
     }
 </script>

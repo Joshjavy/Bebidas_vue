@@ -17,7 +17,7 @@
               <div class="flex items-start">
                 <div class="flex-shrink-0">
                     <XCircleIcon v-if="notificiones.error" class="h-6 w-6 text-red-400" aria-hidden="true" />
-                  <CheckCircleIcon class="h-6 w-6 text-green-400" aria-hidden="true" />
+                  <CheckCircleIcon v-if="!notificiones.error" class="h-6 w-6 text-green-400" aria-hidden="true" />
                   
                 </div>
                 <div class="ml-3 w-0 flex-1 pt-0.5">
