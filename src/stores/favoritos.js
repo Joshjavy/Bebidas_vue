@@ -2,11 +2,14 @@ import {ref, watch, onMounted, computed } from 'vue'
 import { defineStore} from 'pinia'
 import { useBebidasStore } from './bebidas'
 import { useModalStore } from './modal'
+import { useNotificacionStore } from './notificaciones'
 
 export const useFavoritosStore = defineStore('favoritos',()=>{
 
     const bebidas = useBebidasStore();
     const modal = useModalStore();
+    const notificaciones = useNotificacionStore()
+
     const favoritos = ref([]);
 
     onMounted(()=>{
@@ -34,6 +37,9 @@ export const useFavoritosStore = defineStore('favoritos',()=>{
 
     const agregarFavorito =()=>{
         favoritos.value.push(bebidas.receta)
+        notificaciones.mostrar=true;
+        notificaciones.texto='Se ha agrego a tus favoritos';
+
     }
     const handleClickFavorito =(e)=>{
 
